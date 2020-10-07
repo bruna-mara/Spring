@@ -52,10 +52,15 @@ public class PostagemController {
 	return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
 	}
 	
-	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
+	@DeleteMapping("/servicos/{id}")
+	public String remover(@PathVariable Long id) {	
 		repository.deleteById(id);
-		
+	return "sucesso";
 	}
 	
+	//@DeleteMapping("/{id}")
+	//public void delete(@PathVariable long id) {
+		//repository.deleteById(id);
+	//}
+		
 }
