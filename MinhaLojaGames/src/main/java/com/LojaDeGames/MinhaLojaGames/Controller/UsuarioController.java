@@ -48,8 +48,8 @@ public class UsuarioController {
 	}
 	
 	
-	@PutMapping("{id}")
-	public ResponseEntity<UsuarioModel> put(@PathVariable Long id, @RequestBody UsuarioModel usuario){
+	@PutMapping("/{id}")
+	public ResponseEntity<UsuarioModel> putTema(@PathVariable Long id, @RequestBody UsuarioModel usuario){
 		usuario.setId(id);
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(usuario));
 	}

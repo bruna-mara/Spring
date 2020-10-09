@@ -1,6 +1,7 @@
 package com.LojaDeGames.MinhaLojaGames.Controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.LojaDeGames.MinhaLojaGames.Model.ProdutoModel;
 import com.LojaDeGames.MinhaLojaGames.Repository.ProdutoRepository;
 
@@ -49,7 +51,7 @@ public class ProdutoController {
 	
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<ProdutoModel> put(@PathVariable Long id, @RequestBody ProdutoModel produto){
+	public ResponseEntity<ProdutoModel> putProduto(@PathVariable Long id, @RequestBody ProdutoModel produto){
 		produto.setId(id);
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(produto));
 	}

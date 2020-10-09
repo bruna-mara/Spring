@@ -35,6 +35,10 @@ public class CategoriaController {
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
+		// .map e .orElse nesse caso serve para tratar o erro e devolver uma reposta caso ocorra.
+		//o map vai mapear os Id's existentes. 
+		//caso o usuario digite um id inexistente retorna um notfound
+		
 	}
 	
 	@GetMapping("/categoria/{categoria}")
@@ -46,12 +50,15 @@ public class CategoriaController {
 	public ResponseEntity<CategoriaModel> postCategoria(@RequestBody CategoriaModel categoria){
 		return ResponseEntity
 				.status(HttpStatus.CREATED).body(repository.save(categoria));
+		//esse RespEntity.status retorna la no postman o status 201, 
+		//indicando q o post foi criado.
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<CategoriaModel> putCategoria(@PathVariable Long id, @RequestBody CategoriaModel categoria){
 		categoria.setId(id);
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(categoria));
+		
 	}
 	
 	@DeleteMapping("/{id}")
